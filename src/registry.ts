@@ -5,6 +5,7 @@ export type Handler = (n: number) => string;
 export const handlers: Array<[string, Handler]> = [
   ["alpha", (n) => label(n)],
   ["beta", (n) => label(n * 2)],
+  ["gamma", (n) => label(n * 3)],
 ];
 
 export function dispatch(name: string, n: number): string {
