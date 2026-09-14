@@ -1,0 +1,16 @@
+# merget-harness: arming only.
+#
+# A workflow that arrives in a repository's *first* push — the push that
+# creates its history — is registered by GitHub but never armed: no push
+# and no pull_request event triggers it, and neither does a later commit
+# that edits the same file (verified against Pufferfish-Merget 2026-09-14).
+# Adding a *new* workflow file in a later commit arms every workflow in the
+# repository at once. This file is that later commit; `workflow_dispatch`
+# means it is never itself run, so it adds no CI noise.
+name: harness-arm
+on: workflow_dispatch
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "arming only"
